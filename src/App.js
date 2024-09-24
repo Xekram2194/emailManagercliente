@@ -12,8 +12,8 @@ const App = () => {
   return (
     <Router>
       <Layout>
-        <Header style={{ color: 'white' }}>Gestor de Correos</Header>
-        <Content style={{ padding: '20px' }}>
+        {/* <Header style={{ color: 'white' }}>Gestor de Correos</Header> */}
+        <Content style={{ padding: '5px' }}>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<PrivateRoute element={AdminView} roles={['admin']} />} />

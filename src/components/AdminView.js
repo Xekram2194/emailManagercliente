@@ -82,8 +82,8 @@ const AdminView = () => {
     );
   
     return (
-      <div style={{ padding: '20px' }}>
-        <Title level={1}>Gestor de Correos</Title>
+      <div style={{ padding: '5px' }}>
+        <Title style={{ textTransform: 'uppercase', display: 'flex', justifyContent: 'center', alignItems: 'center' }}level={1}>Gestor de Correos</Title>
         <FilterSelect filter={filter} handleFilterChange={handleFilterChange} />
         <EmailTable
           emails={filteredEmails}
