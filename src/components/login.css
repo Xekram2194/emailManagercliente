@@ -1,0 +1,18 @@
+.login-container {
+    background-image: url('/public/background.png'); /* Ruta de la imagen en la carpeta public */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-card {
+    width: 300px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  

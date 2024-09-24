@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Input, Button, Typography, Alert, Card } from 'antd';
+import './login.css'; // Asegúrate de que esta línea esté presente
 
 const { Title } = Typography;
 
@@ -26,8 +27,8 @@ const Login = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Card style={{ width: 300 }}>
+    <div className="login-container">
+      <Card className="login-card">
         <Title level={2} style={{ textAlign: 'center' }}>Login</Title>
         {error && <Alert message={error} type="error" showIcon closable afterClose={() => setError('')} />}
         <Form

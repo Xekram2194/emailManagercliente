@@ -5,8 +5,8 @@ const { Option } = Select;
 
 const EmailTable = ({ emails, handleEditClick, handleAssign, handleStatusChange, workers, setSelectedWorker }) => {
   const columns = [
-    { title: 'From', dataIndex: 'from', key: 'from', width:'20%' },
-    { title: 'Subject', dataIndex: 'subject', key: 'subject' , width:'20%' },
+    { title: 'From', dataIndex: 'from', key: 'from', width: '20%' },
+    { title: 'Subject', dataIndex: 'subject', key: 'subject', width: '20%' },
     { title: 'Date', dataIndex: 'date', key: 'date' },
     {
       title: 'Estado',
@@ -14,7 +14,7 @@ const EmailTable = ({ emails, handleEditClick, handleAssign, handleStatusChange,
       key: 'status',
       render: (text, record) => (
         <Select
-          defaultValue={record.status || 'Pendiente'}
+          value={record.status || 'Pendiente'}  // Usamos 'value' para mantener el estado
           style={{ width: 120 }}
           onChange={(value) => handleStatusChange(record.id, value)}
         >
@@ -66,7 +66,7 @@ const EmailTable = ({ emails, handleEditClick, handleAssign, handleStatusChange,
     },
   ];
 
-  return <Table dataSource={emails} columns={columns} rowKey="id" pagination={false} />;
+  return <Table dataSource={emails} columns={columns} rowKey="id" pagination={true} />;
 };
 
 export default EmailTable;

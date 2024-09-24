@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import EmailTable from './emailTable';
-import { getEmailsForWorker } from '../services/emailService';
-import { Typography } from 'antd';
+import { getWorkerEmails  } from '../services/emailService';
+import { Typography, Col, Row } from 'antd';
+import LogoutButton from './LogoutButton';
 
 const { Title } = Typography;
 
 const WorkerView = () => {
-    const [emails, setEmails] = useState([]);
+  const [emails, setEmails] = useState([]);
 
-    useEffect(() => {
-        const fetchEmails = async () => {
-            try {
-                const workerName = localStorage.getItem('username'); // Obtener el nombre del trabajador desde el localStorage
-                const data = await getEmailsForWorker(workerName);
-                setEmails(data);
-            } catch (error) {
-                console.error("Error fetching emails for worker", error);
-            }
-        };
-        fetchEmails();
-    }, []);
+  useEffect(() => {
+    const fetchWorkerEmails = async () => {
+      try {
+        const response = await getWorkerEmails(); // Método para obtener correos del trabajador
+        setEmails(response);
+      } catch (error) {
+        console.error("Error fetching worker emails", error);
+      }
+    };
 
-    return (
-        <div>
-            <Title level={2}>Correos Asignados</Title>
-            <EmailTable emails={emails} />
-        </div>
-    );
+    fetchWorkerEmails();
+  }, []);
+
+  return (
+    <div style={{ padding: '5px' }}>
+      <Row justify="space-between" align="middle" style={{ marginBottom: '20px' }}>
+        <Col>
+          <Title level={1} style={{ textTransform: 'uppercase', textAlign: 'left' }}>Mis Correos</Title>
+        </Col>
+        <Col>
+          <LogoutButton />
+        </Col>
+      </Row>
+      <EmailTable emails={emails} />
+    </div>
+  );
 };
 
 export default WorkerView;
